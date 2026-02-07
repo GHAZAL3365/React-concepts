@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Users from "./pages/dashboard/Users";
 import Reports from "./pages/dashboard/Reports";
+import UserDetails from "./pages/dashboard/UserDetails";
 
 const App: React.FC = () => {
   return (
@@ -25,6 +26,7 @@ const App: React.FC = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />}>
           <Route path="users" element={<Users />} />
+          <Route path="users/:userId" element={<UserDetails />} />
           <Route path="reports" element={<Reports />} />
         </Route>
         <Route path="*" element={<Error />} />

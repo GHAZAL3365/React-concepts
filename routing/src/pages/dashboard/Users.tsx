@@ -1,14 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import {usersDatabase as users} from "../../data/userData"
 
 const Users: React.FC = () => {
-  const users = [
-    { id: 1, name: 'John Doe', email: 'john@example.com', role: 'Admin', status: 'Active' },
-    { id: 2, name: 'Jane Smith', email: 'jane@example.com', role: 'User', status: 'Active' },
-    { id: 3, name: 'Bob Johnson', email: 'bob@example.com', role: 'User', status: 'Inactive' },
-    { id: 4, name: 'Alice Williams', email: 'alice@example.com', role: 'Manager', status: 'Active' },
-    { id: 5, name: 'Charlie Brown', email: 'charlie@example.com', role: 'User', status: 'Active' },
-  ];
 
+ 
   return (
     <div className="min-h-screen bg-gray-100 p-6">
       <div className="max-w-7xl mx-auto">
@@ -44,7 +40,8 @@ const Users: React.FC = () => {
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
               {users.map((user) => (
-                <tr key={user.id} className="hover:bg-gray-50">
+               <Link to={`/dashboard/users/${user.id}`} >
+                 <tr key={user.id} className="hover:bg-gray-50">
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="text-sm font-medium text-gray-900">{user.name}</div>
                   </td>
@@ -70,6 +67,7 @@ const Users: React.FC = () => {
                     <button className="text-red-600 hover:text-red-900">Delete</button>
                   </td>
                 </tr>
+               </Link>
               ))}
             </tbody>
           </table>
