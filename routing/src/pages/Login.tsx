@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useAuth } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const Login: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -6,6 +8,8 @@ const Login: React.FC = () => {
     password: ''
   });
   const [rememberMe, setRememberMe] = useState(false);
+  const { login} = useAuth()
+  const  navigate = useNavigate()
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -17,9 +21,12 @@ const Login: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Login attempt:', formData, 'Remember me:', rememberMe);
-    // Add your authentication logic here
-    alert('Login functionality would go here!');
+   
+    login("admin");
+    navigate("/dashboard")
+
+   
+    
   };
 
   return (
